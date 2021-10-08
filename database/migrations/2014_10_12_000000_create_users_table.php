@@ -4,6 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+
 class CreateUsersTable extends Migration
 {
     /**
@@ -24,6 +27,12 @@ class CreateUsersTable extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
+
+        User::create([
+            'name' => 'Test',
+            'email' => 'test@gmail.com',
+            'password' => Hash::make('12345678'),
+        ]);
     }
 
     /**
